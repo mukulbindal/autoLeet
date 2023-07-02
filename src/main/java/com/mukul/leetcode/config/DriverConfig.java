@@ -9,7 +9,7 @@ import org.springframework.util.ResourceUtils;
 
 @Configuration
 public class DriverConfig {
-	private final String driverName = "chromedriver";
+	private final String driverName = "chromedriver.exe";
 	@Bean
 	public void configDriver() throws Exception{
         URL resource = ResourceUtils.getURL("classpath:drivers/"+driverName);
