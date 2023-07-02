@@ -25,7 +25,7 @@ public class SeleniumUtil {
 //	}
 	@Scheduled(cron = "0 0 10,15/12 * * ?")
 	public static void submit() throws Exception{
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(options);
@@ -48,12 +48,12 @@ public class SeleniumUtil {
 		
 		WebElement fire = 
 		driver.findElement(By.xpath("//*[@id=\"navbar-right-container\"]/div[3]/a"));//.click();
-		
-		System.out.println(fire.getAttribute("href"));
-		if(fire.getAttribute("href")==null) {
-			System.out.println("Already submitted, hence breaking");
-			return ;
-		}
+		//*[@id="navbar-right-container"]/div[3]/a
+		System.out.println(fire.toString());
+//		if(fire.getAttribute("href")==null) {
+//			System.out.println("Already submitted, hence breaking");
+//			return ;
+//		}
 		Thread.sleep(10000);
 		
 //		WebElement codeArea = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[1]/div/div[3]/div/div[1]/div/div[2]/div[1]/div/div[6]/div[1]/div/div"));
@@ -76,7 +76,11 @@ public class SeleniumUtil {
 		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[1]/div/div[3]/div/div[3]/div[2]/div/button/span")).click();
 		Thread.sleep(20000);
 		driver.close();
-																																							
+		try {
+		driver.close();
+		}catch(Exception e){
+			//pass
+		}
 		
 	}
 }
